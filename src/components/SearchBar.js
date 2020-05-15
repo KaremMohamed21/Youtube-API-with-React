@@ -2,7 +2,7 @@ import React from "react";
 
 class SearchBar extends React.Component {
   state = {
-    searchKey: "",
+    keyword: "",
   };
 
   render() {
@@ -12,14 +12,15 @@ class SearchBar extends React.Component {
           className="ui form"
           onSubmit={(e) => {
             e.preventDefault();
+            this.props.fetchKeyword(this.state.keyword);
           }}
         >
           <div className="field">
             <label>Video search</label>
             <input
               type="text"
-              value={this.state.searchKey}
-              onChange={(e) => this.setState({ searchKey: e.target.value })}
+              value={this.state.keyword}
+              onChange={(e) => this.setState({ keyword: e.target.value })}
             />
           </div>
         </form>
