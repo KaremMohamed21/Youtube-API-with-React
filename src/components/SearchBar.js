@@ -1,6 +1,7 @@
 import React from "react";
 
 class SearchBar extends React.Component {
+  // SearchBar state
   state = {
     keyword: "",
   };

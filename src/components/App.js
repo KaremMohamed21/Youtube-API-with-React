@@ -11,6 +11,11 @@ class App extends React.Component {
     selectedVideo: null,
   };
 
+  // TO set default search when the App loads
+  componentDidMount() {
+    this.onKeywordSubmit("Buildings");
+  }
+
   // TO Get Videos from Youtube API by Search Keyword
   onKeywordSubmit = async (keyword) => {
     const res = await youtube.get("/search", {
@@ -19,7 +24,10 @@ class App extends React.Component {
         q: keyword,
       },
     });
-    this.setState({ videoList: res.data.items });
+    this.setState({
+      videoList: res.data.items,
+      selectedVideo: res.data.items[0],
+    });
   };
 
   // TO Get Selected Video

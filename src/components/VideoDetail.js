@@ -1,10 +1,12 @@
 import React from "react";
 
 const VideoDetail = ({ selectedVideo }) => {
+  // Check if there're videos rendered
   if (!selectedVideo) {
     return <div>Enter Search term and select Video</div>;
   }
 
+  // Youtube video src
   const videoSrc = `https://www.youtube.com/embed/${selectedVideo.id.videoId}`;
 
   return (

@@ -2,6 +2,7 @@ import React from "react";
 import VideoItem from "./VideoItem";
 
 const VideoList = (props) => {
+  // Looping Video list
   const renderdList = props.videos.map((video) => {
     return (
       <VideoItem
