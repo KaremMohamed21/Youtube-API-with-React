@@ -33,11 +33,19 @@ class App extends React.Component {
     return (
       <div className="ui container" style={{ marginTop: "10px" }}>
         <SearchBar fetchKeyword={this.onKeywordSubmit} />
-        <VideoDetail selectedVideo={this.state.selectedVideo} />
-        <VideoList
-          fetchVideoSelected={this.onVideoSelect}
-          videos={this.state.videoList}
-        />
+        <div className="ui grid">
+          <div className="ui row">
+            <div className="eleven wide column">
+              <VideoDetail selectedVideo={this.state.selectedVideo} />
+            </div>
+            <div className="five wide column">
+              <VideoList
+                fetchVideoSelected={this.onVideoSelect}
+                videos={this.state.videoList}
+              />
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
