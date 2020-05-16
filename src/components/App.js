@@ -2,11 +2,13 @@ import React from "react";
 import youtube, { basePARAMS } from "../api/youtube";
 import SearchBar from "./SearchBar";
 import VideoList from "./VideoList";
+import VideoDetail from "./VideoDetail";
 
 class App extends React.Component {
   // Main App State
   state = {
     videoList: [],
+    selectedVideo: null,
   };
 
   // TO Get Videos from Youtube API by Search Keyword
@@ -18,15 +20,24 @@ class App extends React.Component {
       },
     });
     this.setState({ videoList: res.data.items });
-    console.log(this.state.videoList);
+  };
+
+  // TO Get Selected Video
+  onVideoSelect = (selectedVideo) => {
+    this.setState({
+      selectedVideo,
+    });
   };
 
   render() {
     return (
       <div className="ui container" style={{ marginTop: "10px" }}>
         <SearchBar fetchKeyword={this.onKeywordSubmit} />
-        {this.state.videoList.length} Videos
-        <VideoList videos={this.state.videoList} />
+        <VideoDetail selectedVideo={this.state.selectedVideo} />
+        <VideoList
+          fetchVideoSelected={this.onVideoSelect}
+          videos={this.state.videoList}
+        />
       </div>
     );
   }

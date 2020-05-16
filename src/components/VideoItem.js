@@ -1,14 +1,20 @@
 import React from "react";
+import "../css/style.css";
 
 const VideoItem = (props) => {
   return (
-    <div className="item">
+    <div
+      className="item"
+      onClick={() => {
+        props.fetchVideoSelected(props.video);
+      }}
+    >
       <img
         className="ui image"
         src={props.video.snippet.thumbnails.default.url}
       />
       <div className="content">
-        <a className="header">{props.video.snippet.title}</a>
+        <h4 className="header">{props.video.snippet.title}</h4>
       </div>
     </div>
   );
